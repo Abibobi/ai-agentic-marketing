@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Influencer Campaign Brief</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4F46E5;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #4338CA;
+    }
+  </style>
+</head>
+<body>
+  <form action="http://localhost:5678/webhook-test/ecf51d4c-1446-48b5-a7e9-d9c7310d1784" method="POST">
+    <h2>AI-Driven Influencer Campaign Form</h2>
+
+    <div class="form-group">
+      <label for="brand">Brand Name</label>
+      <input type="text" name="brand" id="brand" required>
+    </div>
+
+    <div class="form-group">
+      <label for="product">Product/Service</label>
+      <input type="text" name="product" id="product" required>
+    </div>
+
+    <div class="form-group">
+      <label for="target">Target Audience</label>
+      <textarea name="target" id="target" placeholder="e.g. young adults 18–24, tech-savvy, urban cities" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="platforms">Preferred Platforms</label>
+      <select name="platforms" id="platforms" multiple required>
+        <option value="instagram">Instagram</option>
+        <option value="youtube">YouTube</option>
+        <option value="tiktok">TikTok</option>
+        <option value="twitter">Twitter</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="budget">Campaign Budget (INR)</label>
+      <select name="budget" id="budget" required>
+        <option value="">-- Select --</option>
+        <option value="10000-20000">₹10K – ₹20K</option>
+        <option value="20000-50000">₹20K – ₹50K</option>
+        <option value="50000-100000">₹50K – ₹1L</option>
+        <option value="100000+">Above ₹1L</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="goal">Campaign Goal</label>
+      <select name="goal" id="goal" required>
+        <option value="">-- Select --</option>
+        <option value="awareness">Brand Awareness</option>
+        <option value="engagement">Engagement</option>
+        <option value="leads">Lead Generation</option>
+        <option value="sales">Sales / Conversions</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Your Email</label>
+      <input type="email" name="email" id="email" required>
+    </div>
+
+    <button type="submit">Submit Campaign Brief</button>
+  </form>
+</body>
+</html>
