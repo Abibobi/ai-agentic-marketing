@@ -2,105 +2,233 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Influencer Campaign Brief</title>
   <style>
+    :root {
+      --primary-color: #4361ee;
+      --accent-color: #3f37c9;
+      --success-color: #4cc9f0;
+      --light-bg: #f8f9fa;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
     body {
-      font-family: sans-serif;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 2rem;
     }
+    
+    .container {
+      width: 100%;
+      max-width: 700px;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    header h1 {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    header p {
+      color: #666;
+      font-size: 1rem;
+    }
+    
     form {
       background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 600px;
-      margin: auto;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
     }
+    
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
+    
     label {
       display: block;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #444;
     }
+    
     input, textarea, select {
       width: 100%;
-      padding: 0.6rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      padding: 0.8rem;
+      border-radius: var(--border-radius);
+      border: 1px solid #ddd;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
+    
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+    
+    select[multiple] {
+      height: 120px;
+    }
+    
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
     button {
-      background-color: #4F46E5;
+      background-color: var(--primary-color);
       color: white;
-      padding: 0.75rem 1.5rem;
+      padding: 1rem 2rem;
       border: none;
-      border-radius: 5px;
-      font-weight: bold;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 1rem;
       cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      width: 100%;
+      margin-top: 1rem;
     }
+    
     button:hover {
-      background-color: #4338CA;
+      background-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .success-message {
+      background-color: #e6f7ff;
+      border-left: 4px solid var(--success-color);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+    }
+    
+    .success-message h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .success-message p {
+      color: #555;
+    }
+    
+    @media (max-width: 768px) {
+      form {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <form action="http://localhost:5678/webhook-test/ecf51d4c-1446-48b5-a7e9-d9c7310d1784" method="POST">
-    <h2>AI-Driven Influencer Campaign Form</h2>
-
-    <div class="form-group">
-      <label for="brand">Brand Name</label>
-      <input type="text" name="brand" id="brand" required>
+  <div class="container">
+    <header>
+      <h1>AI-Driven Influencer Campaign</h1>
+      <p>Fill out the form below to get started with your personalized campaign</p>
+    </header>
+    
+    <form id="campaignForm" action="http://localhost:5678/webhook-test/ecf51d4c-1446-48b5-a7e9-d9c7310d1784" method="POST">
+      <div class="form-group">
+        <label for="brand">Brand Name</label>
+        <input type="text" name="brand" id="brand" placeholder="Your brand name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="product">Product/Service</label>
+        <input type="text" name="product" id="product" placeholder="What are you promoting?" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="target">Target Audience</label>
+        <textarea name="target" id="target" placeholder="e.g. young adults 18–24, tech-savvy, urban cities" required></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="platforms">Preferred Platforms (hold Ctrl/Cmd to select multiple)</label>
+        <select name="platforms" id="platforms" multiple required>
+          <option value="instagram">Instagram</option>
+          <option value="youtube">YouTube</option>
+          <option value="tiktok">TikTok</option>
+          <option value="twitter">Twitter</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="budget">Campaign Budget (INR)</label>
+        <select name="budget" id="budget" required>
+          <option value="">-- Select Budget Range --</option>
+          <option value="10000-20000">₹10K – ₹20K</option>
+          <option value="20000-50000">₹20K – ₹50K</option>
+          <option value="50000-100000">₹50K – ₹1L</option>
+          <option value="100000+">Above ₹1L</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="goal">Campaign Goal</label>
+        <select name="goal" id="goal" required>
+          <option value="">-- Select Primary Goal --</option>
+          <option value="awareness">Brand Awareness</option>
+          <option value="engagement">Engagement</option>
+          <option value="leads">Lead Generation</option>
+          <option value="sales">Sales / Conversions</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" name="email" id="email" placeholder="Where should we send updates?" required>
+      </div>
+      
+      <button type="submit">Submit Campaign Brief</button>
+    </form>
+    
+    <div id="successMessage" class="success-message hidden">
+      <h3>Campaign Brief Submitted Successfully!</h3>
+      <p>Thank you for submitting your campaign brief. Our team will review your information and send further updates to your email address.</p>
+      <p>You can expect to hear from us within 24-48 hours.</p>
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="product">Product/Service</label>
-      <input type="text" name="product" id="product" required>
-    </div>
-
-    <div class="form-group">
-      <label for="target">Target Audience</label>
-      <textarea name="target" id="target" placeholder="e.g. young adults 18–24, tech-savvy, urban cities" required></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="platforms">Preferred Platforms</label>
-      <select name="platforms" id="platforms" multiple required>
-        <option value="instagram">Instagram</option>
-        <option value="youtube">YouTube</option>
-        <option value="tiktok">TikTok</option>
-        <option value="twitter">Twitter</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="budget">Campaign Budget (INR)</label>
-      <select name="budget" id="budget" required>
-        <option value="">-- Select --</option>
-        <option value="10000-20000">₹10K – ₹20K</option>
-        <option value="20000-50000">₹20K – ₹50K</option>
-        <option value="50000-100000">₹50K – ₹1L</option>
-        <option value="100000+">Above ₹1L</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="goal">Campaign Goal</label>
-      <select name="goal" id="goal" required>
-        <option value="">-- Select --</option>
-        <option value="awareness">Brand Awareness</option>
-        <option value="engagement">Engagement</option>
-        <option value="leads">Lead Generation</option>
-        <option value="sales">Sales / Conversions</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="email">Your Email</label>
-      <input type="email" name="email" id="email" required>
-    </div>
-
-    <button type="submit">Submit Campaign Brief</button>
-  </form>
+  <script>
+    document.getElementById('campaignForm').addEventListener('submit', function(e) {
+      // In a real application, you would not prevent the default form submission
+      // This is just for demonstration purposes
+      e.preventDefault();
+      
+      // Hide the form
+      this.style.display = 'none';
+      
+      // Show success message
+      document.getElementById('successMessage').classList.remove('hidden');
+      
+      // In a real application, you would submit the form data here
+      console.log('Form would be submitted in a real application');
+    });
+  </script>
 </body>
 </html>
